@@ -1,0 +1,15 @@
+* Version 0.4
+- rpmfusion-packager-setup now configures .plague-client-rpmfusion.cfg
+
+* Version 0.3
+- Use pycurl instead of wrapping wget
+- Display output in realtime for *-cvs scripts
+- Use anonymous CVS if certificate is not found
+- Add plague-client-rf wrapper
+- Add '-a' and '--anonymous' options to the *-cvs scripts
+
+* Version 0.2
+- Splits rpmfusion-cvs into rpmfusion-{free,nonfree}-cvs
+
+* Version 0.1
+- Initial release based on fedora-packager

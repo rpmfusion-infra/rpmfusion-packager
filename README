@@ -1,0 +1,15 @@
+== rpmfusion-packager-setup ==
+rpmfusion-packager-setup will check your user environment and ensure it is
+ready for use with the RPM Fusion infrastructure. You only need to run this
+command once.
+Usage: rpmfusion-packager-setup
+
+== rpmfusion-*-cvs ==
+rpmfusion-free-cvs and rpmfusion-nonfree-cvs allow you to easily checkout
+modules from RPM Fusion free and nonfree cvs repositories, respectively.
+Usage: rpmfusion-$REPO-cvs [module1] [OPTIONAL module2 module3 etc]
+
+== plague-client-rf ==
+This is a simple wrapper that enables the use of 'plague-client' with the
+RPM Fusion Plague configuration file. For usage instructions, see the
+'plague-client' documentation.
