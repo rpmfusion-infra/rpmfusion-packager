@@ -9,7 +9,3 @@ rpmfusion-free-cvs and rpmfusion-nonfree-cvs allow you to easily checkout
 modules from RPM Fusion free and nonfree cvs repositories, respectively.
 Usage: rpmfusion-$REPO-cvs [module1] [OPTIONAL module2 module3 etc]
 
-== plague-client-rf ==
-This is a simple wrapper that enables the use of 'plague-client' with the
-RPM Fusion Plague configuration file. For usage instructions, see the
-'plague-client' documentation.
