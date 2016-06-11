@@ -1,3 +1,7 @@
+* Version 0.5
+- Remove plague-client
+- Introduce fedpkg and koji dependencies
+
 * Version 0.4
 - rpmfusion-packager-setup now configures .plague-client-rpmfusion.cfg
 
