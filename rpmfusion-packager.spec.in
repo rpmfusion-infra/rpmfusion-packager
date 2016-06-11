@@ -7,7 +7,6 @@ Group:          Applications/Productivity
 License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
 Source0:        rpmfusion-packager-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # Packager tools
 Requires:       rpm-build rpmdevtools rpmlint mock
@@ -37,17 +36,17 @@ infrastructure.
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+make install DESTDIR=%{buildroot} INSTALL="install -p"
 
+mkdir -p %{buildroot}%{_sysconfdir}/koji
+install -pm 0644 src/koji-rpmfusion-config \
+  %{buildroot}%{_sysconfdir}/koji/rpmfusion-config
 
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING README TODO
+%config(noreplace) %{_sysconfdir}/koji/rpmfusion-config
 %{_bindir}/rpmfusion-packager-setup
 %{_bindir}/rpmfusion-*-cvs
 
@@ -56,6 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 * Sat Jun 11 2016 Nicolas Chauvet <kwizart@gmail.com> - 0.5-1
 - Remove plague-client
 - Introduce fedpkg and koji dependencies
+- Add koji configuration file
 
 * Fri Sep 07 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.4-2
 - Add Requires mock-rpmfusion-free
