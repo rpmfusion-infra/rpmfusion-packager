@@ -6,8 +6,9 @@ Summary:        Tools for setting up a rpmfusion maintainer environment
 Group:          Applications/Productivity
 License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
-Source0:        rpmfusion-packager-%{version}.tar.bz2
+Source0:        https://github.com/rpmfusion-infra/rpmfusion-packager/archive/master/rpmfusion-packager-%{version}.tar.gz
 
+BuildRequires:  autoconf automake
 # Packager tools
 Requires:       rpm-build rpmdevtools rpmlint mock
 Requires:       fedpkg
@@ -28,7 +29,8 @@ packager in setting up their environment and access the RPM Fusion
 infrastructure.
 
 %prep
-%setup -q
+%setup -q -n %{name}-master
+autoreconf -i
 
 
 %build
@@ -52,10 +54,11 @@ install -pm 0644 src/koji-rpmfusion-config \
 
 
 %changelog
-* Sat Jun 11 2016 Nicolas Chauvet <kwizart@gmail.com> - 0.5-1
+* Sat Jun 11 2016 Nicolas Chauvet <kwizart@gmail.com> - 0.5.0-1
 - Remove plague-client
 - Introduce fedpkg and koji dependencies
 - Add koji configuration file
+- Add some hacks to build.
 
 * Fri Sep 07 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.4-2
 - Add Requires mock-rpmfusion-free
@@ -66,6 +69,9 @@ install -pm 0644 src/koji-rpmfusion-config \
 * Sat Apr 4 2009 Stewart Adam <s.adam at diffingo.com> - 0.3-1
 - Update to 0.3 (use pycurl, display cvs output in realtime, add support for 
   anonymous CVS, add plague-client-rf wrapper)
+
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.2-2
+- rebuild for new F11 features
 
 * Sat Feb 28 2009 Stewart Adam <s.adam at diffingo.com> - 0.2-1
 - Update to 0.2 (splits rpmfusion-cvs into rpmfusion-{free,nonfree}-cvs)
