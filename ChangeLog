@@ -1,3 +1,10 @@
+* Version 0.5.1
+- Add /usr/bin/rpmfusion-koji
+- Update and fix Makefile.am
+- Fix rpmfusion-packager.spec.in
+- Add runme script (help also as documentation)
+- Add .gitignore
+
 * Version 0.5
 - Remove plague-client
 - Introduce fedpkg and koji dependencies

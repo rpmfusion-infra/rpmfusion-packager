@@ -6,7 +6,7 @@ Summary:        Tools for setting up a rpmfusion maintainer environment
 Group:          Applications/Productivity
 License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
-Source0:        https://github.com/rpmfusion-infra/rpmfusion-packager/archive/master/rpmfusion-packager-%{version}.tar.gz
+Source0:        https://github.com/rpmfusion-infra/rpmfusion-packager/archive/v%{version}/rpmfusion-packager-%{version}.tar.gz
 
 BuildRequires:  autoconf automake
 # Packager tools
@@ -29,7 +29,7 @@ packager in setting up their environment and access the RPM Fusion
 infrastructure.
 
 %prep
-%setup -q -n %{name}-master
+%setup -q
 autoreconf -i
 
 
@@ -40,20 +40,20 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%{buildroot} INSTALL="install -p"
 
-mkdir -p %{buildroot}%{_sysconfdir}/koji
-install -pm 0644 src/koji-rpmfusion-config \
-  %{buildroot}%{_sysconfdir}/koji/rpmfusion-config
-
-
 
 %files
-%doc AUTHORS ChangeLog COPYING README TODO
+%doc AUTHORS ChangeLog README TODO
+%license COPYING
 %config(noreplace) %{_sysconfdir}/koji/rpmfusion-config
 %{_bindir}/rpmfusion-packager-setup
 %{_bindir}/rpmfusion-*-cvs
+%{_bindir}/rpmfusion-koji
 
 
 %changelog
+* Tue Sep 13 2016 Sérgio Basto <sergio@serjux.com> - 0.5.1-1
+- 0.5.1 add rpmfusion-koji and License tag
+
 * Sat Jun 11 2016 Nicolas Chauvet <kwizart@gmail.com> - 0.5.0-1
 - Remove plague-client
 - Introduce fedpkg and koji dependencies

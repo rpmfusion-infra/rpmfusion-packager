@@ -1,0 +1,17 @@
+Makefile
+autom4te.cache/
+config.log
+config.status
+fedora-packager/
+rpmfusion-packager.spec
+# from make clean
+rpmfusion-packager-setup
+rpmfusion-free-cvs
+rpmfusion-nonfree-cvs
+rpmfusion-koji
+Makefile.in
+aclocal.m4
+rpmfusion-packager*.tar.gz
+configure
+install-sh
+missing

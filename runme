@@ -1,6 +1,7 @@
+make clean
 autoreconf -i
 ./configure
-make clean
 make
 diff -s rpmfusion-packager.spec ../../rpmfusion-packager/
 echo cp rpmfusion-packager.spec ../../rpmfusion-packager/
+make dist-gzip
