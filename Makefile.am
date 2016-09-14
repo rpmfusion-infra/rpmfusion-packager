@@ -1,7 +1,6 @@
 bin_SCRIPTS = rpmfusion-packager-setup \
 	rpmfusion-free-cvs \
-	rpmfusion-nonfree-cvs \
-	rpmfusion-koji
+	rpmfusion-nonfree-cvs
 
 CLEANFILES = $(bin_SCRIPTS) Makefile.in \
     aclocal.m4 \
@@ -11,7 +10,7 @@ CLEANFILES = $(bin_SCRIPTS) Makefile.in \
 	config.status \
 	config.log \
 	Makefile \
-	rpmfusion-packager*.tar.bz2 \
+	rpmfusion-packager*.tar.gz \
 	rpmfusion-packager.spec
 
 EXTRA_DIST = \
@@ -35,13 +34,12 @@ rpmfusion-packager-setup: $(srcdir)/src/rpmfusion-packager-setup.py
 	rm -f rpmfusion-packager-setup
 	install -p -m 755 -T $(srcdir)/src/rpmfusion-packager-setup.py rpmfusion-packager-setup
 
-rpmfusion-koji: $(srcdir)/src/secondary-koji
-	rm -f rpmfusion-koji
-	install -p -m 755 -T $(srcdir)/src/secondary-koji rpmfusion-koji
+install-exec-local:
+	cd $(DESTDIR)/usr/bin; rm -f koji-rpmfusion; $(LN_S) koji koji-rpmfusion
 
-EXTRA_DIST += configs/rpmfusion-config
-kojiconf_DATA = $(srcdir)/configs/rpmfusion-config
-kojiconfdir = $(sysconfdir)/koji
+EXTRA_DIST += configs/rpmfusion.conf
+kojiconf_DATA = $(srcdir)/configs/rpmfusion.conf
+kojiconfdir = $(sysconfdir)/koji.conf.d/
 
 maintainer-clean-local:
 	rm -f configure install-sh missing
