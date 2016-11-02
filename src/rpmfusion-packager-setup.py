@@ -57,18 +57,18 @@ if __name__ == "__main__":
       print "~/.rpmfusion.cvsuser already exists - skipping"
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cert')):
         print "You need a client certificate from the RPM Fusion Account System"
-        print "Please download one from https://fas.rpmfusion.org/accounts/user/gencert"
+        print "Please download one from https://admin.rpmfusion.org/accounts/user/gencert"
         print "Save it to ~/.rpmfusion.cert and re-run this script"
         sys.exit(1)
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-upload-ca.cert')):
         print 'Retrieving .rpmfusion-upload-ca.cert'
-        download('https://fas.rpmfusion.org/accounts/rpmfusion-upload-ca.cert',
+        download('https://admin.rpmfusion.org/accounts/rpmfusion-upload-ca.cert',
                  '%s/.rpmfusion-upload-ca.cert' % USERHOME)
     else:
       print '~/.rpmfusion-upload-ca.cert already exists - skipping'
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-server-ca.cert')):
         print 'Retrieving .rpmfusion-server-ca.cert'
-        download('https://fas.rpmfusion.org/accounts/rpmfusion-server-ca.cert',
+        download('https://admin.rpmfusion.org/accounts/rpmfusion-server-ca.cert',
                  '%s/.rpmfusion-server-ca.cert' % USERHOME)
     else:
         print '~/.rpmfusion-server-ca.cert already exists - skipping'

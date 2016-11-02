@@ -51,6 +51,9 @@ make install DESTDIR=%{buildroot} INSTALL="install -p"
 
 
 %changelog
+* Wed Nov 02 2016 Sérgio Basto <sergio@serjux.com> - 0.5.3-1
+- Move fas.rpmfusion.org to admin.rpmfusion.org/accounts rfbz#4314
+
 * Wed Sep 14 2016 Sérgio Basto <sergio@serjux.com> - 0.5.2-1
 - Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink
   of koji and use one koji profile instead use secondary arch script.

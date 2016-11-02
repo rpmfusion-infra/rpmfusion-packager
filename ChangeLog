@@ -1,3 +1,11 @@
+* Version 0.5.3
+- Move fas.rpmfusion.org to admin.rpmfusion.org/accounts rfbz#4314
+
+* Version 0.5.2
+- Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink
+  of koji and use one koji profile instead use secondary arch script.
+- Requires rfpkg instead fedpkg.
+
 * Version 0.5.1
 - Add /usr/bin/rpmfusion-koji
 - Update and fix Makefile.am
