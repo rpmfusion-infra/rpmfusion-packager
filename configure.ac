@@ -1,4 +1,4 @@
-AC_INIT([rpmfusion-packager], [0.5.3])
+AC_INIT([rpmfusion-packager],[0.6.0])
 AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip])
 AC_PATH_PROGS(PYTHON, python)
 AC_PATH_PROGS(BASH, sh bash)
