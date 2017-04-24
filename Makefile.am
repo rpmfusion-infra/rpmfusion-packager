@@ -16,7 +16,7 @@ CLEANFILES = $(bin_SCRIPTS) Makefile.in \
 EXTRA_DIST = \
     rpmfusion-packager.spec \
     src/rpmfusion-packager-setup.py \
-	src/secondary-koji
+    $(NULL)
 
 rpmfusion-packager-setup: $(srcdir)/src/rpmfusion-packager-setup.py
 	rm -f rpmfusion-packager-setup
