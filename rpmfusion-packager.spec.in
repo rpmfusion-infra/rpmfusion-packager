@@ -16,7 +16,7 @@ Requires:       koji
 Requires:       mock-rpmfusion-free
 
 # Tools required by the scripts included
-Requires:       python-pycurl cvs
+Requires:       python-pycurl
 
 # See FIXME in rpmfusion-cvs
 #Requires:       pyOpenSSL
@@ -46,7 +46,6 @@ make install DESTDIR=%{buildroot} INSTALL="install -p"
 %license COPYING
 %config(noreplace) %{_sysconfdir}/koji.conf.d/rpmfusion.conf
 %{_bindir}/rpmfusion-packager-setup
-%{_bindir}/rpmfusion-*-cvs
 %{_bindir}/koji-rpmfusion
 
 
