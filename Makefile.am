@@ -1,6 +1,5 @@
 bin_SCRIPTS = rpmfusion-packager-setup \
-	rpmfusion-free-cvs \
-	rpmfusion-nonfree-cvs
+	 $(NULL)
 
 CLEANFILES = $(bin_SCRIPTS) Makefile.in \
     aclocal.m4 \
