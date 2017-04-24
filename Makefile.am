@@ -1,4 +1,5 @@
 bin_SCRIPTS = rpmfusion-packager-setup \
+	 bin/rfabipkgdiff \
 	 $(NULL)
 
 CLEANFILES = $(bin_SCRIPTS) Makefile.in \

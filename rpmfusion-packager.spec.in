@@ -45,6 +45,7 @@ autoreconf -i
 %doc AUTHORS ChangeLog README TODO
 %license COPYING
 %config(noreplace) %{_sysconfdir}/koji.conf.d/rpmfusion.conf
+%{_bindir}/rfabipkgdiff
 %{_bindir}/rpmfusion-packager-setup
 %{_bindir}/koji-rpmfusion
 
