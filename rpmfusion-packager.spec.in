@@ -13,6 +13,7 @@ BuildRequires:  autoconf automake
 Requires:       rpm-build rpmdevtools rpmlint mock
 Requires:       rfpkg
 Requires:       koji
+Requires:       libabigail
 Requires:       mock-rpmfusion-free
 
 # Tools required by the scripts included
