@@ -48,13 +48,13 @@ def download(location, file):
 if __name__ == "__main__":
     USERHOME = os.path.expanduser('~')
     print 'Setting up RPM Fusion packager environment'
-    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cvsuser')):
-        username = raw_input('Enter your RPM Fusion CVS username: ')
-        fh = open(os.path.join(USERHOME, '.rpmfusion.cvsuser'), 'w')
+    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.user')):
+        username = raw_input('Enter your RPM Fusion username: ')
+        fh = open(os.path.join(USERHOME, '.rpmfusion.user'), 'w')
         fh.write(username)
         fh.close()
     else:
-      print "~/.rpmfusion.cvsuser already exists - skipping"
+      print "~/.rpmfusion.user already exists - skipping"
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cert')):
         print "You need a client certificate from the RPM Fusion Account System"
         print "Please download one from https://admin.rpmfusion.org/accounts/user/gencert"
@@ -72,24 +72,4 @@ if __name__ == "__main__":
                  '%s/.rpmfusion-server-ca.cert' % USERHOME)
     else:
         print '~/.rpmfusion-server-ca.cert already exists - skipping'
-    if not os.path.isfile(os.path.join(USERHOME, '.plague-client-rpmfusion.cfg')):
-        email = raw_input('Enter your FAS-registered email address: ')
-        contents = """[Certs]
-user-ca-cert = ~/.rpmfusion-upload-ca.cert
-server-ca-cert = ~/.rpmfusion-server-ca.cert
-user-cert = ~/.rpmfusion.cert
-
-[User]
-email = %s
-
-[Server]
-use_ssl = yes
-address = https://buildsys.rpmfusion.org:8887
-allow_uploads = False
-""" % email
-        fh = open(os.path.join(USERHOME, '.plague-client-rpmfusion.cfg'), 'w')
-        fh.write(contents)
-        fh.close()
-    else:
-        print '~/.plague-client-rpmfusion.cfg already exists - skipping'
 print 'Done!'
