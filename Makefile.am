@@ -15,20 +15,8 @@ CLEANFILES = $(bin_SCRIPTS) Makefile.in \
 
 EXTRA_DIST = \
     rpmfusion-packager.spec \
-    src/rpmfusion-free-cvs.py \
-    src/rpmfusion-nonfree-cvs.py \
     src/rpmfusion-packager-setup.py \
 	src/secondary-koji
-
-rpmfusion-free-cvs: $(srcdir)/src/rpmfusion-free-cvs.py
-	rm -f rpmfusion-free-cvs
-	cp -p $(srcdir)/src/rpmfusion-free-cvs.py rpmfusion-free-cvs
-	chmod ugo+x rpmfusion-free-cvs
-
-rpmfusion-nonfree-cvs: $(srcdir)/src/rpmfusion-nonfree-cvs.py
-	rm -f rpmfusion-nonfree-cvs
-	cp -p $(srcdir)/src/rpmfusion-nonfree-cvs.py rpmfusion-nonfree-cvs
-	chmod ugo+x rpmfusion-nonfree-cvs
 
 rpmfusion-packager-setup: $(srcdir)/src/rpmfusion-packager-setup.py
 	rm -f rpmfusion-packager-setup
