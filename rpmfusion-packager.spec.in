@@ -51,6 +51,14 @@ autoreconf -i
 
 
 %changelog
+* Tue Apr 25 2017 Sérgio Basto <sergio@serjux.com> - 0.6.0-1
+- New release version 0.6.0 .
+- Fix one issue with recent koji, by explictely using authtype
+  ssl in the rpmfusion.conf config file.
+- Remove old CVS scripts (for old rpmfusion infrastruture), cvs requirement
+  from rpmfusion-packager package and clean-up cvs scripts from makefile.
+- Add rfabipkgdiff script and some requirements to run it.
+
 * Wed Nov 02 2016 Sérgio Basto <sergio@serjux.com> - 0.5.3-1
 - Move fas.rpmfusion.org to admin.rpmfusion.org/accounts rfbz#4314
 
