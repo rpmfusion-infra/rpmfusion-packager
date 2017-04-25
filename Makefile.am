@@ -1,5 +1,4 @@
 bin_SCRIPTS = rpmfusion-packager-setup \
-	 bin/rfabipkgdiff \
 	 $(NULL)
 
 CLEANFILES = $(bin_SCRIPTS) Makefile.in \
@@ -16,6 +15,7 @@ CLEANFILES = $(bin_SCRIPTS) Makefile.in \
 EXTRA_DIST = \
     rpmfusion-packager.spec \
     src/rpmfusion-packager-setup.py \
+    bin/rfabipkgdiff \
     $(NULL)
 
 rpmfusion-packager-setup: $(srcdir)/src/rpmfusion-packager-setup.py
@@ -23,6 +23,7 @@ rpmfusion-packager-setup: $(srcdir)/src/rpmfusion-packager-setup.py
 	install -p -m 755 -T $(srcdir)/src/rpmfusion-packager-setup.py rpmfusion-packager-setup
 
 install-exec-local:
+	cp bin/rfabipkgdiff $(DESTDIR)/usr/bin
 	cd $(DESTDIR)/usr/bin; rm -f koji-rpmfusion; $(LN_S) koji koji-rpmfusion
 
 EXTRA_DIST += configs/rpmfusion.conf

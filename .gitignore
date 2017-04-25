@@ -2,7 +2,6 @@ Makefile
 autom4te.cache/
 config.log
 config.status
-fedora-packager/
 rpmfusion-packager.spec
 # from make clean
 rpmfusion-packager-setup
