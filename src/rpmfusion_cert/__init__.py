@@ -91,7 +91,7 @@ def read_user_cert():
 
     """
     if os.path.exists(os.path.expanduser('~/.fedora.upn')):
-        with file(os.path.expanduser('~/.fedora.upn'), 'r') as f:
+        with open(os.path.expanduser('~/.fedora.upn'), 'r') as f:
             return f.read().replace('\n', '')
 
     my_cert = _open_cert()
