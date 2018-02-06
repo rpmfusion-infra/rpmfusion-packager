@@ -29,11 +29,9 @@ def _open_cert():
     Read in the certificate so we dont duplicate the code 
     """
      # Make sure we can even read the thing.
-    if os.path.exists(os.path.expanduser('~/.fedora.upn')):
-        return None
-    cert_file = os.path.join(os.path.expanduser('~'), ".fedora.cert")
+    cert_file = os.path.join(os.path.expanduser('~'), ".rpmfusion.cert")
     if not os.access(cert_file, os.R_OK):
-        raise fedora_cert_error("""!!!    cannot read your ~/.fedora.cert file   !!!
+        raise fedora_cert_error("""!!!    cannot read your ~/.rpmfusion.cert file   !!!
 !!! Ensure the file is readable and try again !!!""")
     raw_cert = open(cert_file).read()
     my_cert = crypto.load_certificate(crypto.FILETYPE_PEM, raw_cert)
@@ -46,7 +44,7 @@ def verify_cert():
     not revoked
     Expiry time warn if less than 21 days
     """
-    if os.path.exists(os.path.expanduser('~/.fedora.upn')):
+    if os.path.exists(os.path.expanduser('~/.rpmfusion.upn')):
         print('Kerberos configured, cert ignored')
         return
 
@@ -90,8 +88,8 @@ def read_user_cert():
     Figure out the Fedora user name from ~/.fedora.cert
 
     """
-    if os.path.exists(os.path.expanduser('~/.fedora.upn')):
-        with open(os.path.expanduser('~/.fedora.upn'), 'r') as f:
+    if os.path.exists(os.path.expanduser('~/.rpmfusion.upn')):
+        with open(os.path.expanduser('~/.rpmfusion.upn'), 'r') as f:
             return f.read().replace('\n', '')
 
     my_cert = _open_cert()
@@ -107,7 +105,7 @@ def create_user_cert(username=None):
         username = input('FAS Username: ')
     password = getpass.getpass('FAS Password: ')
     try:
-        fas = AccountSystem('https://admin.fedoraproject.org/accounts/', username=username, password=password)
+        fas = AccountSystem('https://admin.rpmfusion.org/accounts/', username=username, password=password)
         cert = fas.user_gencert()
         fas.logout()
     except AuthError:
@@ -115,12 +113,12 @@ def create_user_cert(username=None):
     except CLAError:
         fas.logout()
         raise fedora_cert_error("""You must sign the CLA before you can generate your certificate.\n
-To do this, go to https://admin.fedoraproject.org/accounts/cla/""")
-    cert_file = os.path.join(os.path.expanduser('~'), ".fedora.cert")
+To do this, go to https://admin.rpmfusion.org/accounts/cla/""")
+    cert_file = os.path.join(os.path.expanduser('~'), ".rpmfusion.cert")
     try:
         FILE = open(cert_file,"w")
         FILE.write(cert)
         FILE.close()
     except:
         raise fedora_cert_error("""Can not open cert file for writing.
-Please paste certificate into ~/.fedora.cert\n\n%s""" % cert)
+Please paste certificate into ~/.rpmfusion.cert\n\n%s""" % cert)

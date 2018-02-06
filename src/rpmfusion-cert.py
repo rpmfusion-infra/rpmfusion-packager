@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# fedora-cert - a command line tool to manage your fedora SSL user certificates
+# rpmfusion-cert - a command line tool to manage your rpmfusion SSL user certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
 # Author(s):  Dennis Gilmore <dennis@ausil.us>
@@ -12,7 +12,7 @@
 # the full text of the license.
 
 import optparse
-import fedora_cert
+import rpmfusion_cert
 import os.path
 import sys
 
@@ -21,12 +21,12 @@ def main(opts):
     # gets us existing acc info
     if not opts.username:
         try:
-            username = fedora_cert.read_user_cert()
+            username = rpmfusion_cert.read_user_cert()
         except:
             print("Can't determine fas name, lets get a new cert")
             try:
-                fedora_cert.create_user_cert(None)
-            except fedora_cert.fedora_cert_error as e:
+                rpmfusion_cert.create_user_cert(None)
+            except rpmfusion_cert.rpmfusion_cert_error as e:
                 print(e)
                 sys.exit(1)
             sys.exit(0)
@@ -34,9 +34,9 @@ def main(opts):
         username = opts.username
 
     if opts.confkrb:
-        with open(os.path.expanduser('~/.fedora.upn'), 'w') as f:
+        with open(os.path.expanduser('~/.rpmfusion.upn'), 'w') as f:
             f.write(username)
-        print('Kerberos username configured. Run kinit %s@FEDORAPROJECT.ORG' %
+        print('Kerberos username configured. Run kinit %s@RPMFUSION.ORG' %
               username)
         sys.exit(0)
 
@@ -44,24 +44,24 @@ def main(opts):
     if opts.newcert:
         print("Getting a new User Certificate")
         try:
-            fedora_cert.create_user_cert(username)
-        except fedora_cert.fedora_cert_error as e:
+            rpmfusion_cert.create_user_cert(username)
+        except rpmfusion_cert.rpmfusion_cert_error as e:
             print(e)
             sys.exit(1)
         sys.exit(0)
-    if fedora_cert.certificate_expired():
+    if rpmfusion_cert.certificate_expired():
         print("Certificate has expired, getting a new one")
         try:
-            fedora_cert.create_user_cert(username)
-        except fedora_cert.fedora_cert_error as e:
+            rpmfusion_cert.create_user_cert(username)
+        except rpmfusion_cert.rpmfusion_cert_error as e:
             print(e)
             sys.exit(1)
         sys.exit(0)
     if opts.verifycert:
         print("Verifying Certificate")
         try:
-            fedora_cert.verify_cert()
-        except fedora_cert.fedora_cert_error as e:
+            rpmfusion_cert.verify_cert()
+        except rpmfusion_cert.rpmfusion_cert_error as e:
             print(e)
             sys.exit(1)
 

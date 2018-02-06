@@ -8,6 +8,7 @@ URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
 Source0:        https://github.com/rpmfusion-infra/rpmfusion-packager/archive/v%{version}/rpmfusion-packager-%{version}.tar.gz
 
 BuildRequires:  autoconf automake
+BuildRequires:  python2-devel
 # Packager tools
 Requires:       rpm-build rpmdevtools rpmlint mock
 Requires:       rfpkg
@@ -27,6 +28,18 @@ BuildArch:      noarch
 rpmfusion-packager provides a set of utilities designed to help a RPM Fusion
 packager in setting up their environment and access the RPM Fusion
 infrastructure.
+
+
+%package     -n rpmfusion-cert
+Summary:        Fedora certificate tool and python library
+Group:          Applications/Databases
+Requires:       pyOpenSSL
+Requires:       python-requests
+Requires:       python-fedora
+Requires:       python-six
+
+%description -n rpmfusion-cert
+Provides rpmfusion-cert and the rpmfusion_cert python library
 
 %prep
 %setup -q
@@ -49,8 +62,15 @@ autoreconf -i
 %{_bindir}/rpmfusion-packager-setup
 %{_bindir}/koji-rpmfusion
 
+%files -n rpmfusion-cert
+%license COPYING
+%{_bindir}/rpmfusion-cert
+%{python2_sitelib}/rpmfusion_cert
 
 %changelog
+* Sat Feb 03 2018 Sérgio Basto <sergio@serjux.com> - 0.6.1-1
+- Add rpmfusion-cert sub-package
+
 * Tue Apr 25 2017 Sérgio Basto <sergio@serjux.com> - 0.6.0-1
 - New release version 0.6.0 .
 - Fix one issue with recent koji, by explictely using authtype
