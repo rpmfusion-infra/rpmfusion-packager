@@ -8,9 +8,11 @@ rpmfusion-packager-setup
 rpmfusion-free-cvs
 rpmfusion-nonfree-cvs
 rpmfusion-koji
+rpmfusion-cert
 Makefile.in
 aclocal.m4
 rpmfusion-packager*.tar.gz
 configure
 install-sh
 missing
+py-compile
