@@ -1,8 +1,10 @@
-# fedora-cert - a Python library for Managing fedora SSL Certificates
+# rpmfusion-cert - a Python library for Managing rpmfusion SSL Certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
 # Author(s):  Dennis Gilmore <dennis@ausil.us>
 #             Ralph Bean <rbean@redhat.com>
+#
+# RPMFusion version by Sérgio Basto
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
@@ -21,7 +23,7 @@ import datetime
 from six.moves import input
 
 # Define our own error class
-class fedora_cert_error(Exception):
+class rpmfusion_cert_error(Exception):
     pass
 
 def _open_cert():
@@ -31,7 +33,7 @@ def _open_cert():
      # Make sure we can even read the thing.
     cert_file = os.path.join(os.path.expanduser('~'), ".rpmfusion.cert")
     if not os.access(cert_file, os.R_OK):
-        raise fedora_cert_error("""!!!    cannot read your ~/.rpmfusion.cert file   !!!
+        raise rpmfusion_cert_error("""!!!    cannot read your ~/.rpmfusion.cert file   !!!
 !!! Ensure the file is readable and try again !!!""")
     raw_cert = open(cert_file).read()
     my_cert = crypto.load_certificate(crypto.FILETYPE_PEM, raw_cert)
@@ -72,7 +74,7 @@ def verify_cert():
 
 def certificate_expired():
     """
-    Check to see if ~/.fedora.cert is expired
+    Check to see if ~/.rpmfusion.cert is expired
     Returns True or False
 
     """
@@ -85,7 +87,7 @@ def certificate_expired():
 
 def read_user_cert():
     """
-    Figure out the Fedora user name from ~/.fedora.cert
+    Figure out the Fedora user name from ~/.rpmfusion.cert
 
     """
     if os.path.exists(os.path.expanduser('~/.rpmfusion.upn')):
@@ -109,10 +111,10 @@ def create_user_cert(username=None):
         cert = fas.user_gencert()
         fas.logout()
     except AuthError:
-        raise fedora_cert_error("Invalid username/password.")
+        raise rpmfusion_cert_error("Invalid username/password.")
     except CLAError:
         fas.logout()
-        raise fedora_cert_error("""You must sign the CLA before you can generate your certificate.\n
+        raise rpmfusion_cert_error("""You must sign the CLA before you can generate your certificate.\n
 To do this, go to https://admin.rpmfusion.org/accounts/cla/""")
     cert_file = os.path.join(os.path.expanduser('~'), ".rpmfusion.cert")
     try:
@@ -120,5 +122,5 @@ To do this, go to https://admin.rpmfusion.org/accounts/cla/""")
         FILE.write(cert)
         FILE.close()
     except:
-        raise fedora_cert_error("""Can not open cert file for writing.
+        raise rpmfusion_cert_error("""Can not open cert file for writing.
 Please paste certificate into ~/.rpmfusion.cert\n\n%s""" % cert)
