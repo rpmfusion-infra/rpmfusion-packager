@@ -1,9 +1,19 @@
+* Version 0.6.2
+- Fix a bug with rpmfusion-cert
+
+* Version 0.6.1
+- Add rpmfusion-cert sub-package
+
+* Version 0.6.0
+- Fix one issue with recent koji, by explictely using authtype ssl in the rpmfusion.conf config file.
+- Remove old CVS scripts (for old rpmfusion infrastruture), cvs requirement from rpmfusion-packager package and clean-up cvs scripts from makefile.
+- Add rfabipkgdiff script and some requirements to run it.
+
 * Version 0.5.3
 - Move fas.rpmfusion.org to admin.rpmfusion.org/accounts rfbz#4314
 
 * Version 0.5.2
-- Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink
-  of koji and use one koji profile instead use secondary arch script.
+- Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink of koji and use one koji profile instead use secondary arch script.
 - Requires rfpkg instead fedpkg.
 
 * Version 0.5.1

@@ -1,4 +1,4 @@
-AC_INIT([rpmfusion-packager],[0.6.1])
+AC_INIT([rpmfusion-packager],[0.6.2])
 AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip])
 AC_PATH_PROGS(PYTHON, python)
 AM_CONDITIONAL([HAVE_PYTHON], [test "$PYTHON" != :])

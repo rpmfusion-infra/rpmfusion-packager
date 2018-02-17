@@ -1,3 +1,7 @@
+# Edit ChangeLog
+# rpmdev-bumpspec -n 0.6.2 -c "Fix a bug with rpmfusion-cert" rpmfusion-packager.spec.in
+# Remove first change of rpmdev-bumpspec in rpmfusion-packager.spec.in with gitdiff -F2 -#1 | patch -p1 -R
+# Bump version in configure.ac
 make clean
 autoreconf -i
 ./configure

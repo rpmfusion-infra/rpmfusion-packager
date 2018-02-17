@@ -68,6 +68,9 @@ autoreconf -i
 %{python2_sitelib}/rpmfusion_cert
 
 %changelog
+* Sat Feb 17 2018 Sérgio Basto <sergio@serjux.com> - 0.6.2-1
+- Fix a bug with rpmfusion-cert
+
 * Sat Feb 03 2018 Sérgio Basto <sergio@serjux.com> - 0.6.1-1
 - Add rpmfusion-cert sub-package
 
