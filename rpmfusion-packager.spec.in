@@ -9,7 +9,7 @@ Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  python2-devel
+BuildRequires:  python3-devel
 # Packager tools
 Requires:       rpm-build
 Requires:       rpmdevtools
@@ -22,7 +22,7 @@ Requires:       mock-rpmfusion-free
 
 # Tools required by the scripts included
 %if 0%{?fedora}
-Requires:       python2-pycurl
+Requires:       python3-pycurl
 %else
 Requires:       python-pycurl
 %endif
@@ -42,13 +42,13 @@ infrastructure.
 Summary:        Fedora certificate tool and python library
 Group:          Applications/Databases
 %if 0%{?fedora}
-Requires:       python2-pyOpenSSL
+Requires:       python3-pyOpenSSL
 %else
 Requires:       pyOpenSSL
 %endif
-Requires:       python2-requests
-Requires:       python2-fedora
-Requires:       python2-six
+Requires:       python3-requests
+Requires:       python3-fedora
+Requires:       python3-six
 
 %description -n rpmfusion-cert
 Provides rpmfusion-cert and the rpmfusion_cert python library
@@ -77,7 +77,7 @@ autoreconf -i
 %files -n rpmfusion-cert
 %license COPYING
 %{_bindir}/rpmfusion-cert
-%{python2_sitelib}/rpmfusion_cert
+%{python3_sitelib}/rpmfusion_cert
 
 %changelog
 * Sun Sep 02 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.2-3
