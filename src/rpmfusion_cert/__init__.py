@@ -1,3 +1,4 @@
+from __future__ import print_function
 # rpmfusion-cert - a Python library for Managing rpmfusion SSL Certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
@@ -12,6 +13,8 @@
 # option) any later version.  See http://www.gnu.org/copyleft/gpl.html for
 # the full text of the license.
 
+from builtins import str
+from builtins import input
 import os
 import getpass
 from fedora.client.fas2 import AccountSystem
@@ -70,7 +73,7 @@ def verify_cert():
         serial_no = my_cert.get_serial_number()
         if serial_no in [int(cert.get_serial(), 16) for cert in revoked]:
             print('WARNING: Your cert appears in the revocation list.')
-            print('        ', crl_url)
+            print(('        ', crl_url))
 
 def certificate_expired():
     """
@@ -104,7 +107,7 @@ def read_user_cert():
 
 def create_user_cert(username=None):
     if not username:
-        username = input('FAS Username: ')
+        username = eval(input('FAS Username: '))
     password = getpass.getpass('FAS Password: ')
     try:
         fas = AccountSystem('https://admin.rpmfusion.org/accounts/', username=username, password=password)
