@@ -75,7 +75,7 @@ def verify_cert():
         serial_no = my_cert.get_serial_number()
         if serial_no in [int(cert.get_serial(), 16) for cert in revoked]:
             print('WARNING: Your cert appears in the revocation list.')
-            print(('        ', crl_url))
+            print('         ' + crl_url)
 
 def certificate_expired():
     """
