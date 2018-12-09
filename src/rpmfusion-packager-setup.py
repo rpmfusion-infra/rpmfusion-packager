@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #  Copyright (C) 2009 Stewart Adam
 #  Copyright (C) 2007, 2008, 2009 Dennis Gilmore

@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 # rpmfusion-cert - a command line tool to manage your rpmfusion SSL user certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
