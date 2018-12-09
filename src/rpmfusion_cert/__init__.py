@@ -1,4 +1,4 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
 # rpmfusion-cert - a Python library for Managing rpmfusion SSL Certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
@@ -12,6 +12,8 @@ from __future__ import print_function
 # Free Software Foundation; either version 2 of the License, or (at your
 # option) any later version.  See http://www.gnu.org/copyleft/gpl.html for
 # the full text of the license.
+
+from __future__ import print_function
 
 from builtins import str
 from builtins import input
