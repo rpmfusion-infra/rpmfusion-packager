@@ -1,6 +1,6 @@
 Name:           rpmfusion-packager
 Version:        @VERSION@
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        Tools for setting up a rpmfusion maintainer environment
 
 License:        GPLv2+
@@ -80,6 +80,9 @@ autoreconf -i
 %{python3_sitelib}/rpmfusion_cert
 
 %changelog
+* Sun Dec 09 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.6.3-1
+- Port to python3
+
 * Sun Sep 02 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.2-3
 - Fix python deps for el7
 
