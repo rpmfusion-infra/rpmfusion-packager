@@ -7,9 +7,16 @@ License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
 Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.bz2
 
+BuildArch:      noarch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
+%if 0%{?fedora}
 BuildRequires:  python3-devel
+%else
+BuildRequires:  python2-devel
+%endif
+
 # Packager tools
 Requires:       rpm-build
 Requires:       rpmdevtools
@@ -27,11 +34,6 @@ Requires:       python3-pycurl
 Requires:       python-pycurl
 %endif
 
-# See FIXME in rpmfusion-cvs
-#Requires:       pyOpenSSL
-
-BuildArch:      noarch
-
 %description
 rpmfusion-packager provides a set of utilities designed to help a RPM Fusion
 packager in setting up their environment and access the RPM Fusion
@@ -43,12 +45,16 @@ Summary:        Fedora certificate tool and python library
 Group:          Applications/Databases
 %if 0%{?fedora}
 Requires:       python3-pyOpenSSL
-%else
-Requires:       pyOpenSSL
-%endif
 Requires:       python3-requests
 Requires:       python3-fedora
 Requires:       python3-six
+%else
+Requires:       pyOpenSSL
+Requires:       python2-requests
+Requires:       python2-fedora
+Requires:       python2-six
+%endif
+
 
 %description -n rpmfusion-cert
 Provides rpmfusion-cert and the rpmfusion_cert python library
@@ -77,7 +83,11 @@ autoreconf -i
 %files -n rpmfusion-cert
 %license COPYING
 %{_bindir}/rpmfusion-cert
+%if 0%{?fedora}
 %{python3_sitelib}/rpmfusion_cert
+%else
+%{python2_sitelib}/rpmfusion_cert
+%endif
 
 %changelog
 * Sun Dec 09 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.6.3-1
