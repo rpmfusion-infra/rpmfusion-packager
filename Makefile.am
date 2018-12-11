@@ -14,7 +14,7 @@ CLEANFILES = $(bin_SCRIPTS) \
              config.status \
              config.log \
              Makefile \
-             rpmfusion-packager*.tar.gz \
+             rpmfusion-packager*.tar.bz2 \
              rpmfusion-packager.spec
 
 EXTRA_DIST = rpmfusion-packager.spec \
@@ -49,8 +49,8 @@ maintainer-clean-local:
 	rm -f rpmfusion-packager*.tar.bz2
 	rm -f autom4te.cache/
 
-rpm: dist-gzip
-	@(rpmbuild -ta rpmfusion-packager-$(PACKAGE_VERSION).tar.gz)
+rpm: dist-bzip2
+	@(rpmbuild -ta rpmfusion-packager-$(PACKAGE_VERSION).tar.bz2)
 
-srpm: dist-gzip
-	@(rpmbuild -ts rpmfusion-packager-$(PACKAGE_VERSION).tar.gz)
+srpm: dist-bzip2
+	@(rpmbuild -ts rpmfusion-packager-$(PACKAGE_VERSION).tar.bz2)

@@ -5,7 +5,7 @@ Summary:        Tools for setting up a rpmfusion maintainer environment
 
 License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
-Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.gz
+Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.bz2
 
 BuildRequires:  autoconf
 BuildRequires:  automake
