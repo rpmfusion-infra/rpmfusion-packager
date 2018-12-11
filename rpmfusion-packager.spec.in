@@ -65,7 +65,11 @@ autoreconf -i
 
 
 %build
-%configure
+%if 0%{?fedora}
+%configure --with-python3
+%else
+%configure --with-python2
+%endif
 %make_build
 
 %install
