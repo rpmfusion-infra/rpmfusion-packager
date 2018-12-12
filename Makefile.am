@@ -36,6 +36,7 @@ rpmfusion-cert: $(srcdir)/src/rpmfusion-cert.py
 # Link koji-rpmfusion to koji on install
 #
 install-exec-hook:
+	rm -f $(DESTDIR)$(bindir)/koji-rpmfusion
 	$(LN_S) koji $(DESTDIR)$(bindir)/koji-rpmfusion
 
 rpmfusion_cert_PYTHON = $(wildcard $(srcdir)/src/rpmfusion_cert/*.py)
