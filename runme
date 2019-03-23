@@ -3,9 +3,6 @@
 # Remove first change of rpmdev-bumpspec in rpmfusion-packager.spec.in with gitdiff -F2 -#1 | patch -p1 -R
 # Bump version in configure.ac
 make clean
-autoreconf -i
-./configure
-make
+autoreconf -i && ./configure && make && make dist-bzip2 || exit 1
 echo diff rpmfusion-packager.spec ../../rpmfusion-packager/
 diff -sup rpmfusion-packager.spec ../../rpmfusion-packager/
-make dist-gzip

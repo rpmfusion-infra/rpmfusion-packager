@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #  Copyright (C) 2009 Stewart Adam
 #  Copyright (C) 2007, 2008, 2009 Dennis Gilmore
@@ -17,6 +16,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with rpmfusion-packager.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import print_function
+from builtins import input
 import os
 import sys
 import pycurl
@@ -47,29 +48,29 @@ def download(location, file):
 
 if __name__ == "__main__":
     USERHOME = os.path.expanduser('~')
-    print 'Setting up RPM Fusion packager environment'
+    print('Setting up RPM Fusion packager environment')
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.user')):
-        username = raw_input('Enter your RPM Fusion username: ')
+        username = input('Enter your RPM Fusion username: ')
         fh = open(os.path.join(USERHOME, '.rpmfusion.user'), 'w')
         fh.write(username)
         fh.close()
     else:
-      print "~/.rpmfusion.user already exists - skipping"
+      print("~/.rpmfusion.user already exists - skipping")
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cert')):
-        print "You need a client certificate from the RPM Fusion Account System"
-        print "Please download one from https://admin.rpmfusion.org/accounts/user/gencert"
-        print "Save it to ~/.rpmfusion.cert and re-run this script"
+        print("You need a client certificate from the RPM Fusion Account System")
+        print("Please download one from https://admin.rpmfusion.org/accounts/user/gencert")
+        print("Save it to ~/.rpmfusion.cert and re-run this script")
         sys.exit(1)
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-upload-ca.cert')):
-        print 'Retrieving .rpmfusion-upload-ca.cert'
+        print('Retrieving .rpmfusion-upload-ca.cert')
         download('https://admin.rpmfusion.org/accounts/rpmfusion-upload-ca.cert',
                  '%s/.rpmfusion-upload-ca.cert' % USERHOME)
     else:
-      print '~/.rpmfusion-upload-ca.cert already exists - skipping'
+      print('~/.rpmfusion-upload-ca.cert already exists - skipping')
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-server-ca.cert')):
-        print 'Retrieving .rpmfusion-server-ca.cert'
+        print('Retrieving .rpmfusion-server-ca.cert')
         download('https://admin.rpmfusion.org/accounts/rpmfusion-server-ca.cert',
                  '%s/.rpmfusion-server-ca.cert' % USERHOME)
     else:
-        print '~/.rpmfusion-server-ca.cert already exists - skipping'
-print 'Done!'
+        print('~/.rpmfusion-server-ca.cert already exists - skipping')
+print('Done!')

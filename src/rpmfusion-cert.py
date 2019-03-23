@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 # rpmfusion-cert - a command line tool to manage your rpmfusion SSL user certificates
 #
 # Copyright (C) 2009-2014 Red Hat Inc.
@@ -11,6 +11,7 @@
 # option) any later version.  See http://www.gnu.org/copyleft/gpl.html for
 # the full text of the license.
 
+from __future__ import print_function
 import optparse
 import rpmfusion_cert
 import os.path
