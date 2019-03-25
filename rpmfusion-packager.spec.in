@@ -7,12 +7,12 @@
 
 Name:           rpmfusion-packager
 Version:        @VERSION@
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools for setting up a rpmfusion maintainer environment
 
 License:        GPLv2+
 URL:            https://github.com/rpmfusion-infra/rpmfusion-packager
-Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.bz2
+Source0:        %url/archive/v%{version}/rpmfusion-packager-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -109,6 +109,9 @@ autoreconf -i
 %endif
 
 %changelog
+* Mon Mar 25 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-2
+- Revert the sources format to tar.gz, to avoid possible confusion in the future.
+
 * Sun Dec 09 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.6.3-1
 - Port to python3
 
