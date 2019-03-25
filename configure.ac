@@ -18,6 +18,8 @@ AS_IF([test "x$with_python3" != xno],
 AC_CONFIG_FILES([
 Makefile
 rpmfusion-packager.spec
+src/rpmfusion-packager-setup.py
+src/rpmfusion-cert.py
 ])
 
 AC_OUTPUT

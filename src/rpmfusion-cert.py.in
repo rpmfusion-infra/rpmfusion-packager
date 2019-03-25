@@ -1,3 +1,4 @@
+#!@PYTHON@
 # -*- coding: utf-8 -*-
 # rpmfusion-cert - a command line tool to manage your rpmfusion SSL user certificates
 #
@@ -79,7 +80,7 @@ if __name__ == '__main__':
     opt_p.add_option('-v', '--verify-cert', action='store_true', dest='verifycert',
                      default=False, help="Verify Certificate.")
     opt_p.add_option('-k', '--configure-krb', action='store_true', dest='confkrb',
-                     default=False, help="Configure krb5.")
+                     default=False, help="Configure krb5 (ATM not in use).")
 
     (opts, args) = opt_p.parse_args()
 

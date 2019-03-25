@@ -13,9 +13,12 @@ CLEANFILES = $(bin_SCRIPTS) \
 	missing \
 	config.status \
 	config.log \
+	py-compile \
 	Makefile \
 	rpmfusion-packager*.tar.bz2 \
-	rpmfusion-packager.spec
+	rpmfusion-packager.spec \
+	src/rpmfusion-packager-setup.py \
+	src/rpmfusion-cert.py
 
 EXTRA_DIST = rpmfusion-packager.spec \
 	src/rpmfusion-packager-setup.py \

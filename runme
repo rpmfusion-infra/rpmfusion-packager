@@ -4,5 +4,5 @@
 # Bump version in configure.ac
 make clean
 autoreconf -i && ./configure && make && make dist-bzip2 || exit 1
-echo diff rpmfusion-packager.spec ../../rpmfusion-packager/
-diff -sup rpmfusion-packager.spec ../../rpmfusion-packager/
+echo diff ../../rpmfusion-packager/ rpmfusion-packager.spec
+diff -sup ../../rpmfusion-packager/ rpmfusion-packager.spec
