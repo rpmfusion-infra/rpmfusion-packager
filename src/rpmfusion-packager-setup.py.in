@@ -17,7 +17,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with rpmfusion-packager.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
+
 from builtins import input
 import os
 import sys
@@ -26,7 +26,7 @@ import subprocess
 
 def download(location, file):
     """Save data at location to file. WARNING: Overwrites files!"""
-    fh = open(file, 'w')
+    fh = open(file, 'wb')
     curl = pycurl.Curl()
     curl.setopt(pycurl.URL, location)
     curl.setopt(pycurl.FOLLOWLOCATION, 1)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     USERHOME = os.path.expanduser('~')
     print('Setting up RPM Fusion packager environment')
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.user')):
-        username = input('Enter your RPM Fusion username: ')
+        username = eval(input('Enter your RPM Fusion username: '))
         fh = open(os.path.join(USERHOME, '.rpmfusion.user'), 'w')
         fh.write(username)
         fh.close()
