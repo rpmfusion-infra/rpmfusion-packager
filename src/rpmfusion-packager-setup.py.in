@@ -18,7 +18,7 @@
 #  along with rpmfusion-packager.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from builtins import input
+from six.moves import input
 import os
 import sys
 import pycurl
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     USERHOME = os.path.expanduser('~')
     print('Setting up RPM Fusion packager environment')
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.user')):
-        username = eval(input('Enter your RPM Fusion username: '))
+        username = input('Enter your RPM Fusion username: ')
         fh = open(os.path.join(USERHOME, '.rpmfusion.user'), 'w')
         fh.write(username)
         fh.close()

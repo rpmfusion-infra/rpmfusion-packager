@@ -7,7 +7,7 @@
 
 Name:           rpmfusion-packager
 Version:        @VERSION@
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Tools for setting up a rpmfusion maintainer environment
 
 License:        GPLv2+
@@ -111,6 +111,15 @@ autoreconf -i
 %endif
 
 %changelog
+* Thu May 09 2019 Sérgio Basto <sergio@serjux.com> - 0.6.4-1
+- Fix input mess
+
+* Thu Mar 28 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-4
+- In Python 3 we need add the b flag
+
+* Thu Mar 28 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-3
+- python3-rpmfusion-cert obsoletes rpmfusion-cert to fix upgrade path
+
 * Mon Mar 25 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-2
 - Revert the sources format to tar.gz, to avoid possible confusion in the future.
 

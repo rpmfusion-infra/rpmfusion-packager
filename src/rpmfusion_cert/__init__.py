@@ -16,7 +16,7 @@
 from __future__ import print_function
 
 from builtins import str
-from builtins import input
+from six.moves import input
 import os
 import getpass
 from fedora.client.fas2 import AccountSystem
@@ -25,7 +25,6 @@ from fedora.client import AuthError
 from OpenSSL import crypto
 import requests
 import datetime
-from six.moves import input
 
 # Define our own error class
 class rpmfusion_cert_error(Exception):
@@ -109,7 +108,7 @@ def read_user_cert():
 
 def create_user_cert(username=None):
     if not username:
-        username = eval(input('FAS Username: '))
+        username = input('FAS Username: ')
     password = getpass.getpass('FAS Password: ')
     try:
         fas = AccountSystem('https://admin.rpmfusion.org/accounts/', username=username, password=password)

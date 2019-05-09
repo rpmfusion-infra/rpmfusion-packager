@@ -1,6 +1,7 @@
 # Edit ChangeLog
 # rpmdev-bumpspec -n 0.6.2 -c "Fix a bug with rpmfusion-cert" rpmfusion-packager.spec.in
 # Remove first change of rpmdev-bumpspec in rpmfusion-packager.spec.in with gitdiff -F2 -#1 | patch -p1 -R
+# Note: gitdiff is part of "my" patchutils https://copr.fedorainfracloud.org/coprs/sergiomb/patchutils-with_patchview/
 # Bump version in configure.ac
 make clean
 autoreconf -i && ./configure && make && make dist-bzip2 || exit 1

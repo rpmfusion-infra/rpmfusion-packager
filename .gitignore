@@ -16,3 +16,4 @@ configure
 install-sh
 missing
 py-compile
+__pycache__/
