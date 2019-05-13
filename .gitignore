@@ -9,6 +9,8 @@ rpmfusion-free-cvs
 rpmfusion-nonfree-cvs
 rpmfusion-koji
 rpmfusion-cert
+src/rpmfusion-cert.py
+src/rpmfusion-packager-setup.py
 Makefile.in
 aclocal.m4
 rpmfusion-packager*.tar.gz
