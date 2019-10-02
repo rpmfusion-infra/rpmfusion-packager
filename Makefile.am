@@ -44,9 +44,12 @@ rpmfusion_cert_PYTHON = $(wildcard $(srcdir)/src/rpmfusion_cert/*.py)
 
 rpmfusion_certdir = $(pythondir)/rpmfusion_cert
 
-EXTRA_DIST += configs/rpmfusion.conf
+EXTRA_DIST += configs/rpmfusion.conf \
+	configs/koji-rpmfusion
 kojiconf_DATA = $(srcdir)/configs/rpmfusion.conf
 kojiconfdir = $(sysconfdir)/koji.conf.d/
+kojibash_DATA = $(srcdir)/configs/koji-rpmfusion
+kojibashdir = $(datadir)/bash-completion/completions/
 
 maintainer-clean-local:
 	rm -f configure install-sh missing
