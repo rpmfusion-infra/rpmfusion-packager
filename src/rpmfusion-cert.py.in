@@ -68,8 +68,8 @@ def main(opts):
             sys.exit(1)
 
         import OpenSSL.crypto
-        if not hasattr(OpenSSL.crypto, 'load_crl'):
-            print("CRL Checking not available in this version of pyOpenSSL")
+        #if not hasattr(OpenSSL.crypto, 'load_crl'):
+        #    print("CRL Checking not available in this version of pyOpenSSL")
 
 if __name__ == '__main__':
     opt_p = optparse.OptionParser(usage="%prog [OPTIONS] ")

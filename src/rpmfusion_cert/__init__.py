@@ -67,7 +67,11 @@ def verify_cert():
         print('WARNING: Your cert expires soon.')
 
     if hasattr(crypto, 'load_crl'):
-        crl_url = "https://admin.fedoraproject.org/ca/crl.pem"
+        # https://admin.fedoraproject.org/ca/crl.pem is not availabe anymore
+        # and now we get an error that is a false alarm
+        # when or if we got https://admin.rpmfusion.org/accounts/ca/crl.pem
+        # we may turn it on again
+        crl_url = "https://admin.rpmfusion.org/accounts/ca/crl.pem"
         raw_crl = requests.get(crl_url).content
         crl = crypto.load_crl(crypto.FILETYPE_PEM, raw_crl)
         revoked = crl.get_revoked()
