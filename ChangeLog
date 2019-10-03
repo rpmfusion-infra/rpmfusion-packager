@@ -1,51 +1,78 @@
-* Version 0.6.4
+* Thu Oct 03 2019 Sérgio Basto <sergio@serjux.com> - 0.6.5-1
+- Add bash completions for koji-rpmfusion command
+- Update .gitignore
+- Turn off crl certificate check, never worked anyway
+
+* Sat Aug 24 2019 Leigh Scott <leigh123linux@gmail.com> - 0.6.4-2
+- Rebuild for python-3.8
+
+* Thu May 09 2019 Sérgio Basto <sergio@serjux.com> - 0.6.4-1
 - Fix input mess
 
-* Version 0.6.3
-- Port to Python 3
+* Thu Mar 28 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-4
+- In Python 3 we need add the b flag
 
-* Version 0.6.2
+* Thu Mar 28 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-3
+- python3-rpmfusion-cert obsoletes rpmfusion-cert to fix upgrade path
+
+* Mon Mar 25 2019 Sérgio Basto <sergio@serjux.com> - 0.6.3-2
+- Revert the sources format to tar.gz, to avoid possible confusion in the future.
+
+* Sun Dec 09 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.6.3-1
+- Port to python3
+
+* Sun Sep 02 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.2-3
+- Fix python deps for el7
+
+* Sun Sep 02 2018 Leigh Scott <leigh123linux@googlemail.com> - 0.6.2-2
+- Use versioned python deps
+
+* Sat Feb 17 2018 Sérgio Basto <sergio@serjux.com> - 0.6.2-1
 - Fix a bug with rpmfusion-cert
 
-* Version 0.6.1
+* Sat Feb 03 2018 Sérgio Basto <sergio@serjux.com> - 0.6.1-1
 - Add rpmfusion-cert sub-package
 
-* Version 0.6.0
-- Fix one issue with recent koji, by explictely using authtype ssl in the rpmfusion.conf config file.
-- Remove old CVS scripts (for old rpmfusion infrastruture), cvs requirement from rpmfusion-packager package and clean-up cvs scripts from makefile.
+* Tue Apr 25 2017 Sérgio Basto <sergio@serjux.com> - 0.6.0-1
+- New release version 0.6.0 .
+- Fix one issue with recent koji, by explictely using authtype
+  ssl in the rpmfusion.conf config file.
+- Remove old CVS scripts (for old rpmfusion infrastruture), cvs requirement
+  from rpmfusion-packager package and clean-up cvs scripts from makefile.
 - Add rfabipkgdiff script and some requirements to run it.
 
-* Version 0.5.3
+* Wed Nov 02 2016 Sérgio Basto <sergio@serjux.com> - 0.5.3-1
 - Move fas.rpmfusion.org to admin.rpmfusion.org/accounts rfbz#4314
 
-* Version 0.5.2
-- Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink of koji and use one koji profile instead use secondary arch script.
+* Wed Sep 14 2016 Sérgio Basto <sergio@serjux.com> - 0.5.2-1
+- Use koji-rpmfusion name instead rpmfusion-koji, also koji-rpmfusion is symlink
+  of koji and use one koji profile instead use secondary arch script.
 - Requires rfpkg instead fedpkg.
 
-* Version 0.5.1
-- Add /usr/bin/rpmfusion-koji
-- Update and fix Makefile.am
-- Fix rpmfusion-packager.spec.in
-- Add runme script (help also as documentation)
-- Add .gitignore
+* Tue Sep 13 2016 Sérgio Basto <sergio@serjux.com> - 0.5.1-1
+- 0.5.1 add rpmfusion-koji and License tag
 
-* Version 0.5
+* Sat Jun 11 2016 Nicolas Chauvet <kwizart@gmail.com> - 0.5.0-1
 - Remove plague-client
 - Introduce fedpkg and koji dependencies
-- Add configuration file for koji
+- Add koji configuration file
+- Add some hacks to build.
 
-* Version 0.4
-- rpmfusion-packager-setup now configures .plague-client-rpmfusion.cfg
+* Fri Sep 07 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.4-2
+- Add Requires mock-rpmfusion-free
 
-* Version 0.3
-- Use pycurl instead of wrapping wget
-- Display output in realtime for *-cvs scripts
-- Use anonymous CVS if certificate is not found
-- Add plague-client-rf wrapper
-- Add '-a' and '--anonymous' options to the *-cvs scripts
+* Fri Jun 19 2009 Stewart Adam <s.adam at diffingo.com> - 0.4-1
+- Update to 0.4 (configures ~/.plague-client-rpmfusion.cfg)
 
-* Version 0.2
-- Splits rpmfusion-cvs into rpmfusion-{free,nonfree}-cvs
+* Sat Apr 4 2009 Stewart Adam <s.adam at diffingo.com> - 0.3-1
+- Update to 0.3 (use pycurl, display cvs output in realtime, add support for 
+  anonymous CVS, add plague-client-rf wrapper)
 
-* Version 0.1
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.2-2
+- rebuild for new F11 features
+
+* Sat Feb 28 2009 Stewart Adam <s.adam at diffingo.com> - 0.2-1
+- Update to 0.2 (splits rpmfusion-cvs into rpmfusion-{free,nonfree}-cvs)
+
+* Tue Feb 24 2009 Stewart Adam <s.adam at diffingo.com> - 0.1-1
 - Initial release based on fedora-packager
