@@ -1,4 +1,4 @@
-AC_INIT([rpmfusion-packager],[0.6.4])
+AC_INIT([rpmfusion-packager],[0.6.5])
 AM_INIT_AUTOMAKE([dist-bzip2 no-dist-gzip])
 AC_PATH_PROGS(BASH, sh bash)
 AC_PROG_LN_S
@@ -22,4 +22,6 @@ src/rpmfusion-packager-setup.py
 src/rpmfusion-cert.py
 ])
 
+AC_SUBST_FILE([changelog])
+changelog=$srcdir/ChangeLog
 AC_OUTPUT
