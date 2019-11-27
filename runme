@@ -1,6 +1,6 @@
-# rpmdev-bumpspec -n 0.6.2 -c "Fix a bug with rpmfusion-cert" rpmfusion-packager.spec
-# Copy result of rpmdev-bumpspec to ChangeLog
-# Bump version in configure.ac
+echo Bump version in configure.ac
+echo rpmdev-bumpspec -n 0.6.2 -c "Fix a bug with rpmfusion-cert" rpmfusion-packager.spec
+echo Copy result of rpmdev-bumpspec to ChangeLog
 make clean
 autoreconf -i && ./configure && make && make dist-bzip2 || exit 1
 echo diff ../../rpmfusion-packager/ rpmfusion-packager.spec

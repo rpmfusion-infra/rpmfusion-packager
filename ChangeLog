@@ -1,4 +1,4 @@
-* Wed Nov 27 2019 Sérgio Basto <sergio@serjux.com> - 0.6.5-2
+* Wed Nov 27 2019 Sérgio Basto <sergio@serjux.com> - 0.6.6-1
 - Fix Python2 with sync with an old version of Fedora-packager
 
 * Thu Oct 03 2019 Sérgio Basto <sergio@serjux.com> - 0.6.5-1
