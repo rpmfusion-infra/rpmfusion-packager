@@ -1,7 +1,11 @@
+* Wed Nov 27 2019 Sérgio Basto <sergio@serjux.com> - 0.6.5-2
+- Fix Python2 with sync with an old version of Fedora-packager
+
 * Thu Oct 03 2019 Sérgio Basto <sergio@serjux.com> - 0.6.5-1
 - Add bash completions for koji-rpmfusion command
 - Update .gitignore
 - Turn off crl certificate check, never worked anyway
+- Add bash-completion file to the package
 
 * Sat Aug 24 2019 Leigh Scott <leigh123linux@gmail.com> - 0.6.4-2
 - Rebuild for python-3.8

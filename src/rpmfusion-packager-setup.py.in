@@ -59,6 +59,9 @@ if __name__ == "__main__":
       print("~/.rpmfusion.user already exists - skipping")
     if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cert')):
         print("You need a client certificate from the RPM Fusion Account System")
+        print("You might want to run rpmfusion-cert -n to "
+            "regenerate SSL certificate. For more info see "
+            "https://rpmfusion.org/Contributors#If_SSL_certificate_expired")
         print("Please download one from https://admin.rpmfusion.org/accounts/user/gencert")
         print("Save it to ~/.rpmfusion.cert and re-run this script")
         sys.exit(1)

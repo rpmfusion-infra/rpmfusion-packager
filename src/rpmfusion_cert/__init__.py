@@ -13,10 +13,6 @@
 # option) any later version.  See http://www.gnu.org/copyleft/gpl.html for
 # the full text of the license.
 
-from __future__ import print_function
-
-from builtins import str
-from six.moves import input
 import os
 import getpass
 from fedora.client.fas2 import AccountSystem
@@ -25,6 +21,7 @@ from fedora.client import AuthError
 from OpenSSL import crypto
 import requests
 import datetime
+from six.moves import input
 
 # Define our own error class
 class rpmfusion_cert_error(Exception):
