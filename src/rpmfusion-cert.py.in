@@ -66,7 +66,7 @@ def main(opts):
             print(e)
             sys.exit(1)
 
-        import OpenSSL.crypto
+        #import OpenSSL.crypto
         #if not hasattr(OpenSSL.crypto, 'load_crl'):
         #    print("CRL Checking not available in this version of pyOpenSSL")
 

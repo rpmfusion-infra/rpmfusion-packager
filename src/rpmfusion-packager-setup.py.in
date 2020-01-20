@@ -17,16 +17,41 @@
 #  You should have received a copy of the GNU General Public License
 #  along with rpmfusion-packager.  If not, see <http://www.gnu.org/licenses/>.
 
-
-from six.moves import input
+#from six.moves import input
 import os
 import sys
+import rpmfusion_cert
 import pycurl
-import subprocess
+import argparse
 
-def download(location, file):
-    """Save data at location to file. WARNING: Overwrites files!"""
-    fh = open(file, 'wb')
+def generate_browser_cert():
+    '''Convert the user cert to the format for importing into a browser'''
+    os.system('/usr/bin/openssl pkcs12 -export -in ~/.rpmfusion.cert -CAfile ~/.rpmfusion-upload-ca.cert -out ~/rpmfusion-browser-cert.p12')
+
+    print("""
+
+Warning: not in use anymore
+Browser certificate exported to ~/rpmfusion-browser-cert.p12
+To import the certificate into Firefox:
+
+Edit -> Preferences -> Advanced
+Click "View Certificates"
+On "Your Certificates" tab, click "Import"
+Select ~/rpmfusion-browser-cert.p12
+Type the export passphrase you chose earlier
+
+Once imported, you should see a certificate named "Fedora Project".
+Your username should appear underneath this.
+ 
+You should now be able to click the "login" link at http://koji.rpmfusion.org/koji/ successfully.
+
+importing the certificate is optional and not needed for daily use.
+you should also import the ca cert at ~/.rpmfusion-upload-ca.cert
+    """)
+
+def download_cert(location, file):
+    '''Download the cert and write to file. WARNING: Overwrites files!'''
+    fp = open(file, 'wb')
     curl = pycurl.Curl()
     curl.setopt(pycurl.URL, location)
     curl.setopt(pycurl.FOLLOWLOCATION, 1)
@@ -34,47 +59,73 @@ def download(location, file):
     curl.setopt(pycurl.CONNECTTIMEOUT, 30)
     curl.setopt(pycurl.TIMEOUT, 300)
     curl.setopt(pycurl.NOSIGNAL, 1)
-    curl.setopt(pycurl.WRITEDATA, fh)
-    curl.setopt(pycurl.SSL_VERIFYPEER, False)
+    curl.setopt(pycurl.WRITEDATA, fp)
+#    curl.setopt(pycurl.SSL_VERIFYPEER, False)
     try:
         curl.perform()
-        fh.close()
     except:
         import traceback
         traceback.print_exc(file=sys.stderr)
         sys.stderr.flush()
-        # remove the empty file
-        os.remove(file)
     curl.close()
+    fp.close()
+    print("Saved: %s" % file)
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-w', '--with-browser-cert', dest='browser_cert',
+        default=False, action='store_true',
+        help="Also generate a browser certificate"
+    )
+    parser.add_argument(
+        '-U', '--url', dest='fas_url', metavar='url',
+        default='https://admin.rpmfusion.org/accounts/',
+        help='FAS URL (Default: https://admin.rpmfusion.org/accounts/'
+    )
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    user_home = os.path.expanduser('~')
+    user_cert = os.path.join(user_home, '.rpmfusion.cert')
+    upload_ca_cert = os.path.join(user_home, '.rpmfusion-upload-ca')
+    server_ca_cert = os.path.join(user_home, '.rpmfusion-server-ca')
+    print('Setting up RPM Fusion packager environment')
+    #if not os.path.isfile(os.path.join(user_home, '.rpmfusion.user')):
+    #    username = input('Enter your RPM Fusion username: ')
+    #    fh = open(os.path.join(user_home, '.rpmfusion.user'), 'w')
+    #    fh.write(username)
+    #    fh.close()
+    #else:
+    #    print("~/.rpmfusion.user already exists - skipping")
+    if not os.path.isfile(user_cert):
+        print("You need a client certificate from the RPM Fusion Account System")
+        try:
+            rpmfusion_cert.create_user_cert()
+        except rpmfusion_cert.rpmfusion_cert_error as e:
+            print(e)
+            print("You might want to run rpmfusion-cert -n to "
+                "regenerate SSL certificate. For more info see "
+                "https://rpmfusion.org/Contributors#If_SSL_certificate_expired")
+            sys.exit(1)
+    else:
+        #check if the cert has expired  if it has lets get a new one
+        try:
+            if rpmfusion_cert.certificate_expired():
+                username = rpmfusion_cert.read_user_cert()
+                print("Certificate has expired, getting a new one")
+                rpmfusion_cert.create_user_cert(username)
+        except rpmfusion_cert.rpmfusion_cert_error as e:
+            print(e)
+            sys.exit(1)
+
+    download_cert(args.fas_url + '/rpmfusion-upload-ca.cert', upload_ca_cert)
+    download_cert(args.fas_url + '/rpmfusion-server-ca.cert', server_ca_cert)
+
+    if args.browser_cert:
+        print('Setting up Browser Certificates')
+        generate_browser_cert()
 
 if __name__ == "__main__":
-    USERHOME = os.path.expanduser('~')
-    print('Setting up RPM Fusion packager environment')
-    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.user')):
-        username = input('Enter your RPM Fusion username: ')
-        fh = open(os.path.join(USERHOME, '.rpmfusion.user'), 'w')
-        fh.write(username)
-        fh.close()
-    else:
-      print("~/.rpmfusion.user already exists - skipping")
-    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion.cert')):
-        print("You need a client certificate from the RPM Fusion Account System")
-        print("You might want to run rpmfusion-cert -n to "
-            "regenerate SSL certificate. For more info see "
-            "https://rpmfusion.org/Contributors#If_SSL_certificate_expired")
-        print("Please download one from https://admin.rpmfusion.org/accounts/user/gencert")
-        print("Save it to ~/.rpmfusion.cert and re-run this script")
-        sys.exit(1)
-    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-upload-ca.cert')):
-        print('Retrieving .rpmfusion-upload-ca.cert')
-        download('https://admin.rpmfusion.org/accounts/rpmfusion-upload-ca.cert',
-                 '%s/.rpmfusion-upload-ca.cert' % USERHOME)
-    else:
-      print('~/.rpmfusion-upload-ca.cert already exists - skipping')
-    if not os.path.isfile(os.path.join(USERHOME, '.rpmfusion-server-ca.cert')):
-        print('Retrieving .rpmfusion-server-ca.cert')
-        download('https://admin.rpmfusion.org/accounts/rpmfusion-server-ca.cert',
-                 '%s/.rpmfusion-server-ca.cert' % USERHOME)
-    else:
-        print('~/.rpmfusion-server-ca.cert already exists - skipping')
-print('Done!')
+    main()
