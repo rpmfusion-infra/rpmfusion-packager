@@ -1,5 +1,6 @@
 * Thu Nov 28 2019 Sérgio Basto <sergio@serjux.com> - 0.6.7-1
-  Finally, all synced from the latest version of fedora-packager-setup.
+  Finally, all synced from the latest version of fedora-packager-setup which
+  used koji certificate for maintainers' authentication
   rpmfusion-packager-setup now will generate the user certificate and overwrite
   server certificate and CA certificate preventing other errors.
 
