@@ -89,8 +89,8 @@ def main():
     args = parse_args()
     user_home = os.path.expanduser('~')
     user_cert = os.path.join(user_home, '.rpmfusion.cert')
-    upload_ca_cert = os.path.join(user_home, '.rpmfusion-upload-ca')
-    server_ca_cert = os.path.join(user_home, '.rpmfusion-server-ca')
+    upload_ca_cert = os.path.join(user_home, '.rpmfusion-upload-ca.cert')
+    server_ca_cert = os.path.join(user_home, '.rpmfusion-server-ca.cert')
     print('Setting up RPM Fusion packager environment')
     #if not os.path.isfile(os.path.join(user_home, '.rpmfusion.user')):
     #    username = input('Enter your RPM Fusion username: ')
