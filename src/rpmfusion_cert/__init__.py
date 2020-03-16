@@ -62,11 +62,11 @@ def verify_cert():
 
     if valid_until < warn:
         print('WARNING: Your cert expires soon.')
+        return True
 
     if hasattr(crypto, 'load_crl'):
-        # if we got https://admin.rpmfusion.org/accounts/ca/crl.pem
-        # we may turn it on again
-        print("we haven't crl file (https://admin.rpmfusion.org/accounts/ca/crl.pem) to check revocation list")
+        # if we got crl.pem avalable, we may turn it on again.
+        print("We haven't crl.pem (https://admin.rpmfusion.org/accounts/ca/crl.pem) to check revocation list")
         #crl_url = "https://admin.rpmfusion.org/accounts/ca/crl.pem"
         #raw_crl = requests.get(crl_url).content
         #crl = crypto.load_crl(crypto.FILETYPE_PEM, raw_crl)
@@ -75,6 +75,9 @@ def verify_cert():
         #if serial_no in [int(cert.get_serial(), 16) for cert in revoked]:
         #    print('WARNING: Your cert appears in the revocation list.')
         #    print('         ' + crl_url)
+    else:
+        print("CRL Checking not available in this version of pyOpenSSL")
+    return False
 
 def certificate_expired():
     """

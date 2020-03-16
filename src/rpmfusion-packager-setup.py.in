@@ -116,6 +116,10 @@ def main():
                 username = rpmfusion_cert.read_user_cert()
                 print("Certificate has expired, getting a new one")
                 rpmfusion_cert.create_user_cert(username)
+            elif rpmfusion_cert.verify_cert():
+                username = rpmfusion_cert.read_user_cert()
+                print("Certificate expires soon, getting a new one")
+                rpmfusion_cert.create_user_cert(username)
         except rpmfusion_cert.rpmfusion_cert_error as e:
             print(e)
             sys.exit(1)
