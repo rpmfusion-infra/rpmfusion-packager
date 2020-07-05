@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 # rfabipkgdiff - Interact with libabigail for RPM Fusion
 #
@@ -12,7 +12,7 @@
 
 
 /usr/bin/fedabipkgdiff \
-  --server http://koji.rpmfusion.org/koji \
-  --topdir http://koji.rpmfusion.org/kojifiles \
+  --server http://koji.rpmfusion.org/kojihub \
+  --topurl http://koji.rpmfusion.org/kojifiles \
   "$@"
 
