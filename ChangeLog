@@ -1,3 +1,13 @@
+* Fri Jul 10 2020 Sérgio Basto <sergio@serjux.com> - 0.6.8-4
+- fedabipkgdiff is now in libabigail-fedora package, fedabipkgdiff is needed by
+  rfabipkgdiff
+
+* Mon Jul 06 2020 Sérgio Basto <sergio@serjux.com> - 0.6.8-3
+- Fix the bin/rfabipkgdiff to work with the new libabigail-fedora
+
+* Sat May 30 2020 Leigh Scott <leigh123linux@gmail.com> - 0.6.8-2
+- Rebuild for python-3.9
+
 * Mon Mar 16 2020 Sérgio Basto <sergio@serjux.com> - 0.6.8-1
 - If cert expires soon, ask for a new user certificate
 

@@ -37,7 +37,13 @@ Requires:       rpmlint
 Requires:       mock
 Requires:       rfpkg
 Requires:       koji
+%if 0%{?fedora}
+Requires:       libabigail-fedora
+%else
+# EPEL8, ATM, don't have /usr/bin/fedabipkgdiff
+# PR proposed: https://src.fedoraproject.org/rpms/libabigail/pull-request/5
 Requires:       libabigail
+%endif
 Requires:       mock-rpmfusion-free
 
 # Tools required by the scripts included
@@ -80,13 +86,14 @@ Provides rpmfusion-cert and the rpmfusion_cert python library
 
 
 %prep
-%setup -q
+%autosetup -p1
 autoreconf -i
 
 
 %build
 %if %{with python3}
 %configure --with-python3
+pathfix.py -pni %{python3} src/*.py
 %else
 %configure --with-python2
 %endif
