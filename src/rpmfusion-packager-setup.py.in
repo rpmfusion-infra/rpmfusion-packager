@@ -24,31 +24,6 @@ import rpmfusion_cert
 import pycurl
 import argparse
 
-def generate_browser_cert():
-    '''Convert the user cert to the format for importing into a browser'''
-    os.system('/usr/bin/openssl pkcs12 -export -in ~/.rpmfusion.cert -CAfile ~/.rpmfusion-upload-ca.cert -out ~/rpmfusion-browser-cert.p12')
-
-    print("""
-
-Warning: not in use anymore
-Browser certificate exported to ~/rpmfusion-browser-cert.p12
-To import the certificate into Firefox:
-
-Edit -> Preferences -> Advanced
-Click "View Certificates"
-On "Your Certificates" tab, click "Import"
-Select ~/rpmfusion-browser-cert.p12
-Type the export passphrase you chose earlier
-
-Once imported, you should see a certificate named "Fedora Project".
-Your username should appear underneath this.
- 
-You should now be able to click the "login" link at http://koji.rpmfusion.org/koji/ successfully.
-
-importing the certificate is optional and not needed for daily use.
-you should also import the ca cert at ~/.rpmfusion-upload-ca.cert
-    """)
-
 def download_cert(location, file):
     '''Download the cert and write to file. WARNING: Overwrites files!'''
     fp = open(file, 'wb')
@@ -72,16 +47,11 @@ def download_cert(location, file):
     print("Saved: %s" % file)
 
 def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '-w', '--with-browser-cert', dest='browser_cert',
-        default=False, action='store_true',
-        help="Also generate a browser certificate"
-    )
+    parser = argparse.ArgumentParser(description='Usually just run rpmfusion-packager-setup with no options')
     parser.add_argument(
         '-U', '--url', dest='fas_url', metavar='url',
         default='https://admin.rpmfusion.org/accounts/',
-        help='FAS URL (Default: https://admin.rpmfusion.org/accounts/'
+        help='FAS URL (Default: https://admin.rpmfusion.org/accounts/)'
     )
     return parser.parse_args()
 
@@ -89,7 +59,6 @@ def main():
     args = parse_args()
     user_home = os.path.expanduser('~')
     user_cert = os.path.join(user_home, '.rpmfusion.cert')
-    upload_ca_cert = os.path.join(user_home, '.rpmfusion-upload-ca.cert')
     server_ca_cert = os.path.join(user_home, '.rpmfusion-server-ca.cert')
     print('Setting up RPM Fusion packager environment')
     #if not os.path.isfile(os.path.join(user_home, '.rpmfusion.user')):
@@ -124,12 +93,7 @@ def main():
             print(e)
             sys.exit(1)
 
-    download_cert(args.fas_url + '/rpmfusion-upload-ca.cert', upload_ca_cert)
     download_cert(args.fas_url + '/rpmfusion-server-ca.cert', server_ca_cert)
-
-    if args.browser_cert:
-        print('Setting up Browser Certificates')
-        generate_browser_cert()
 
 if __name__ == "__main__":
     main()

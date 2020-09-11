@@ -1,3 +1,8 @@
+* Fri Sep 11 2020 Sérgio Basto <sergio@serjux.com> - 0.7.0-1
+- Fix the warning that we see with koji 1.22 about browser cert and the related
+  ca option in config file, is deprecated and will be removed in koji 1.24,
+  references https://pagure.io/koji/issue/2182
+
 * Fri Jul 10 2020 Sérgio Basto <sergio@serjux.com> - 0.6.8-4
 - fedabipkgdiff is now in libabigail-fedora package, fedabipkgdiff is needed by
   rfabipkgdiff
