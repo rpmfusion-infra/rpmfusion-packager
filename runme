@@ -1,5 +1,6 @@
 echo Bump version in configure.ac
 echo ./runme
+echo update ChangeLog
 echo rpmdev-bumpspec -n verison -c "message" rpmfusion-packager.spec
 echo Copy result of rpmdev-bumpspec to ChangeLog
 echo and ./runme again!
