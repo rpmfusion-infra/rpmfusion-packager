@@ -12,7 +12,7 @@
 
 
 /usr/bin/fedabipkgdiff \
-  --server http://koji.rpmfusion.org/kojihub \
-  --topurl http://koji.rpmfusion.org/kojifiles \
+  --server https://koji.rpmfusion.org/kojihub \
+  --topurl https://koji.rpmfusion.org/kojifiles \
   "$@"
 
