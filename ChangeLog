@@ -1,3 +1,12 @@
+* Tue Jul 26 2022 Sérgio Basto <sergio@serjux.com> - 0.7.2-4
+- Only requires rfpkg, rfpkg will requires the rest
+
+* Sat Jun 25 2022 Robert-André Mauchin <zebob.m@gmail.com> - 0.7.2-3
+- Rebuilt for Python 3.11
+
+* Tue Jun 15 2021 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-2
+- Rebuild for python-3.10
+
 * Tue Nov 24 2020 Sérgio Basto <sergio@serjux.com> 0.7.2-1
 - Using https for koji cli configuration
 
