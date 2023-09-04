@@ -42,13 +42,16 @@ Requires:       libabigail-fedora
 %else
 # EPEL8, ATM, don't have /usr/bin/fedabipkgdiff
 # PR proposed: https://src.fedoraproject.org/rpms/libabigail/pull-request/5
+#Requires:       libabigail
 %endif
 
 # Tools required by the scripts included
 %if %{with python3}
 Requires:       python3-pycurl
+Requires:       python3-rpmfusion-cert
 %else
 Requires:       python-pycurl
+Requires:       rpmfusion-cert
 %endif
 
 %description
@@ -92,7 +95,9 @@ autoreconf -i
 %build
 %if %{with python3}
 %configure --with-python3
-pathfix.py -pni %{python3} src/*.py
+%py3_shebang_fix \
+  src/rpmfusion-cert.py \
+  src/rpmfusion-packager-setup.py
 %else
 %configure --with-python2
 %endif

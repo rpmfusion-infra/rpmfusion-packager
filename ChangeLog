@@ -1,3 +1,15 @@
+* Mon Sep 04 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-8
+- rpmfusion-packager-setup command requires rpmfusion-cert (rfbz#6760)
+
+* Sat Jul 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-7
+- Same again
+
+* Sat Jul 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-6
+- Fix shebang
+
+* Sat Jul 08 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-5
+- Rebuilt for Python 3.12
+
 * Tue Jul 26 2022 Sérgio Basto <sergio@serjux.com> - 0.7.2-4
 - Only requires rfpkg, rfpkg will requires the rest
 
