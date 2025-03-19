@@ -1,10 +1,13 @@
+* Wed Mar 19 2025 Sérgio Basto <sergio@serjux.com> - 0.7.2-11
+- Replace python3-fedora which was removed on rawhide/F42, with python3-rpmfusion
+
 * Sat Feb 01 2025 Sérgio Basto <sergio@serjux.com>
 - Drop support to el7 and python2
 - Use macro bash_completions_dir
 
 * Tue Dec 24 2024 Nicolas Chauvet <kwizart@gmail.com> - 0.7.2-10
-- Mandates rfpkg, use requires instead suggests, maybe recomends is a better
-  choice
+- Mandates rfpkg, use requires instead suggests
+  (SB note) maybe recomends is a better choice
 
 * Thu Jun 13 2024 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-9
 - Rebuilt for Python 3.13

@@ -40,7 +40,7 @@ Summary:        Fedora certificate tool and python library
 Requires:       python3-pyOpenSSL
 Requires:       python3-requests
 # need for fedora.client.fas2.AccountSystem
-Requires:       python3-fedora
+Requires:       python3-rpmfusion
 Requires:       python3-six
 Provides:       rpmfusion-cert  = %{version}-%{release}
 Obsoletes:      rpmfusion-cert  < %{version}-%{release}
