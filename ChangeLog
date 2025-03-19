@@ -1,3 +1,14 @@
+* Sat Feb 01 2025 Sérgio Basto <sergio@serjux.com>
+- Drop support to el7 and python2
+- Use macro bash_completions_dir
+
+* Tue Dec 24 2024 Nicolas Chauvet <kwizart@gmail.com> - 0.7.2-10
+- Mandates rfpkg, use requires instead suggests, maybe recomends is a better
+  choice
+
+* Thu Jun 13 2024 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-9
+- Rebuilt for Python 3.13
+
 * Mon Sep 04 2023 Leigh Scott <leigh123linux@gmail.com> - 0.7.2-8
 - rpmfusion-packager-setup command requires rpmfusion-cert (rfbz#6760)
 

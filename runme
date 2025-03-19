@@ -1,10 +1,9 @@
-echo Bump version in configure.ac
 echo ./runme
-echo update ChangeLog
 echo rpmdev-bumpspec -n verison -c "message" rpmfusion-packager.spec
 echo Copy result of rpmdev-bumpspec to ChangeLog
+echo Bump version in configure.ac
 echo and ./runme again!
 make clean
 autoreconf -i && ./configure && make && make dist-gzip || exit 1
-echo diff ../../rpmfusion-packager/rpmfusion-packager.spec rpmfusion-packager.spec
-diff -sup ../../rpmfusion-packager/rpmfusion-packager.spec rpmfusion-packager.spec
+echo diff ../../new/rpmfusion-packager/rpmfusion-packager.spec rpmfusion-packager.spec
+diff -sup ../../new/rpmfusion-packager/rpmfusion-packager.spec rpmfusion-packager.spec
